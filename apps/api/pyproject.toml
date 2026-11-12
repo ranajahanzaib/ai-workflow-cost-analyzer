@@ -1,0 +1,17 @@
+[project]
+name = "ai-workflow-cost-analyzer"
+version = "0.1.0"
+description = "Measure what an AI workflow costs to actually succeed."
+requires-python = ">=3.12"
+dependencies = ["fastapi>=0.115,<1", "uvicorn[standard]>=0.30,<1", "duckdb>=1.1,<2", "pydantic>=2.9,<3", "python-multipart>=0.0.12,<1"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3,<9", "httpx>=0.27,<1", "ruff>=0.7,<1"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
