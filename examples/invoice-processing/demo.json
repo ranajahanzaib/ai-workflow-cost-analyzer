@@ -1,0 +1,347 @@
+{
+  "schema_version": "1.0",
+  "records": [
+    {
+      "event_type": "project",
+      "id": "proj-invoice",
+      "name": "Invoice Operations",
+      "description": "Synthetic invoice extraction economics"
+    },
+    {
+      "event_type": "workflow",
+      "id": "wf-invoice",
+      "project_id": "proj-invoice",
+      "name": "Invoice extraction and validation",
+      "task_type": "invoice_processing",
+      "baseline_hourly_rate": "32",
+      "baseline_minutes": "6"
+    },
+    {
+      "event_type": "configuration",
+      "id": "cfg-invoice",
+      "workflow_id": "wf-invoice",
+      "name": "Invoice extractor + field validation",
+      "model": "illustrative-invoice-v1"
+    },
+    {
+      "event_type": "task_case",
+      "id": "invoice-001",
+      "workflow_id": "wf-invoice",
+      "category": "invoice_processing",
+      "difficulty": "easy",
+      "description": "Synthetic invoice invoice-001; line-item total $125.50.",
+      "baseline_cost_usd": "3.20",
+      "baseline_minutes": "6",
+      "expected_outcome": {
+        "invoice_total": "125.50",
+        "currency": "USD",
+        "vendor_id": "V-010"
+      },
+      "metadata": {
+        "synthetic": true
+      }
+    },
+    {
+      "event_type": "execution",
+      "id": "invoice-run-001",
+      "workflow_id": "wf-invoice",
+      "configuration_id": "cfg-invoice",
+      "task_case_id": "invoice-001",
+      "category": "invoice_processing",
+      "runtime_status": "finished",
+      "outcome": "verified_success",
+      "attempts": 1,
+      "fallback_completed": false,
+      "baseline_cost_usd": "3.20",
+      "started_at": "2026-10-01T09:00:00Z"
+    },
+    {
+      "event_type": "model_call",
+      "id": "invoice-call-001",
+      "execution_id": "invoice-run-001",
+      "provider": "synthetic",
+      "model": "illustrative-invoice-v1",
+      "input_tokens": 2200,
+      "output_tokens": 500,
+      "reported_cost_usd": "0.006500",
+      "pricing_source": "synthetic_demo_assumption"
+    },
+    {
+      "event_type": "outcome_evidence",
+      "id": "invoice-evidence-001",
+      "execution_id": "invoice-run-001",
+      "method": "expected_output_match",
+      "status": "verified_success",
+      "reference": "invoice-001",
+      "reasoning": "Synthetic invoice field and total validation."
+    },
+    {
+      "event_type": "task_case",
+      "id": "invoice-002",
+      "workflow_id": "wf-invoice",
+      "category": "invoice_processing",
+      "difficulty": "medium",
+      "description": "Synthetic invoice invoice-002; line-item total $162.50.",
+      "baseline_cost_usd": "3.20",
+      "baseline_minutes": "6",
+      "expected_outcome": {
+        "invoice_total": "162.50",
+        "currency": "USD",
+        "vendor_id": "V-011"
+      },
+      "metadata": {
+        "synthetic": true
+      }
+    },
+    {
+      "event_type": "execution",
+      "id": "invoice-run-002",
+      "workflow_id": "wf-invoice",
+      "configuration_id": "cfg-invoice",
+      "task_case_id": "invoice-002",
+      "category": "invoice_processing",
+      "runtime_status": "finished",
+      "outcome": "verified_success",
+      "attempts": 1,
+      "fallback_completed": false,
+      "baseline_cost_usd": "3.20",
+      "started_at": "2026-10-02T09:00:00Z"
+    },
+    {
+      "event_type": "model_call",
+      "id": "invoice-call-002",
+      "execution_id": "invoice-run-002",
+      "provider": "synthetic",
+      "model": "illustrative-invoice-v1",
+      "input_tokens": 2200,
+      "output_tokens": 500,
+      "reported_cost_usd": "0.006500",
+      "pricing_source": "synthetic_demo_assumption"
+    },
+    {
+      "event_type": "outcome_evidence",
+      "id": "invoice-evidence-002",
+      "execution_id": "invoice-run-002",
+      "method": "expected_output_match",
+      "status": "verified_success",
+      "reference": "invoice-002",
+      "reasoning": "Synthetic invoice field and total validation."
+    },
+    {
+      "event_type": "task_case",
+      "id": "invoice-003",
+      "workflow_id": "wf-invoice",
+      "category": "invoice_processing",
+      "difficulty": "hard",
+      "description": "Synthetic invoice invoice-003; line-item total $199.50.",
+      "baseline_cost_usd": "3.20",
+      "baseline_minutes": "6",
+      "expected_outcome": {
+        "invoice_total": "199.50",
+        "currency": "USD",
+        "vendor_id": "V-012"
+      },
+      "metadata": {
+        "synthetic": true
+      }
+    },
+    {
+      "event_type": "execution",
+      "id": "invoice-run-003",
+      "workflow_id": "wf-invoice",
+      "configuration_id": "cfg-invoice",
+      "task_case_id": "invoice-003",
+      "category": "invoice_processing",
+      "runtime_status": "finished",
+      "outcome": "verified_failure",
+      "attempts": 1,
+      "fallback_completed": true,
+      "baseline_cost_usd": "3.20",
+      "started_at": "2026-10-03T09:00:00Z"
+    },
+    {
+      "event_type": "model_call",
+      "id": "invoice-call-003",
+      "execution_id": "invoice-run-003",
+      "provider": "synthetic",
+      "model": "illustrative-invoice-v1",
+      "input_tokens": 2200,
+      "output_tokens": 500,
+      "reported_cost_usd": "0.006500",
+      "pricing_source": "synthetic_demo_assumption"
+    },
+    {
+      "event_type": "outcome_evidence",
+      "id": "invoice-evidence-003",
+      "execution_id": "invoice-run-003",
+      "method": "expected_output_match",
+      "status": "verified_failure",
+      "reference": "invoice-003",
+      "reasoning": "Synthetic invoice field and total validation."
+    },
+    {
+      "event_type": "human_work",
+      "id": "invoice-fallback-003",
+      "execution_id": "invoice-run-003",
+      "category": "fallback_completion",
+      "minutes": "5",
+      "hourly_rate_usd": "32"
+    },
+    {
+      "event_type": "task_case",
+      "id": "invoice-004",
+      "workflow_id": "wf-invoice",
+      "category": "invoice_processing",
+      "difficulty": "easy",
+      "description": "Synthetic invoice invoice-004; line-item total $236.50.",
+      "baseline_cost_usd": "3.20",
+      "baseline_minutes": "6",
+      "expected_outcome": {
+        "invoice_total": "236.50",
+        "currency": "USD",
+        "vendor_id": "V-013"
+      },
+      "metadata": {
+        "synthetic": true
+      }
+    },
+    {
+      "event_type": "execution",
+      "id": "invoice-run-004",
+      "workflow_id": "wf-invoice",
+      "configuration_id": "cfg-invoice",
+      "task_case_id": "invoice-004",
+      "category": "invoice_processing",
+      "runtime_status": "finished",
+      "outcome": "verified_success",
+      "attempts": 1,
+      "fallback_completed": false,
+      "baseline_cost_usd": "3.20",
+      "started_at": "2026-10-04T09:00:00Z"
+    },
+    {
+      "event_type": "model_call",
+      "id": "invoice-call-004",
+      "execution_id": "invoice-run-004",
+      "provider": "synthetic",
+      "model": "illustrative-invoice-v1",
+      "input_tokens": 2200,
+      "output_tokens": 500,
+      "reported_cost_usd": "0.006500",
+      "pricing_source": "synthetic_demo_assumption"
+    },
+    {
+      "event_type": "outcome_evidence",
+      "id": "invoice-evidence-004",
+      "execution_id": "invoice-run-004",
+      "method": "expected_output_match",
+      "status": "verified_success",
+      "reference": "invoice-004",
+      "reasoning": "Synthetic invoice field and total validation."
+    },
+    {
+      "event_type": "task_case",
+      "id": "invoice-005",
+      "workflow_id": "wf-invoice",
+      "category": "invoice_processing",
+      "difficulty": "medium",
+      "description": "Synthetic invoice invoice-005; line-item total $273.50.",
+      "baseline_cost_usd": "3.20",
+      "baseline_minutes": "6",
+      "expected_outcome": {
+        "invoice_total": "273.50",
+        "currency": "USD",
+        "vendor_id": "V-014"
+      },
+      "metadata": {
+        "synthetic": true
+      }
+    },
+    {
+      "event_type": "execution",
+      "id": "invoice-run-005",
+      "workflow_id": "wf-invoice",
+      "configuration_id": "cfg-invoice",
+      "task_case_id": "invoice-005",
+      "category": "invoice_processing",
+      "runtime_status": "finished",
+      "outcome": "verified_success",
+      "attempts": 1,
+      "fallback_completed": false,
+      "baseline_cost_usd": "3.20",
+      "started_at": "2026-10-05T09:00:00Z"
+    },
+    {
+      "event_type": "model_call",
+      "id": "invoice-call-005",
+      "execution_id": "invoice-run-005",
+      "provider": "synthetic",
+      "model": "illustrative-invoice-v1",
+      "input_tokens": 2200,
+      "output_tokens": 500,
+      "reported_cost_usd": "0.006500",
+      "pricing_source": "synthetic_demo_assumption"
+    },
+    {
+      "event_type": "outcome_evidence",
+      "id": "invoice-evidence-005",
+      "execution_id": "invoice-run-005",
+      "method": "expected_output_match",
+      "status": "verified_success",
+      "reference": "invoice-005",
+      "reasoning": "Synthetic invoice field and total validation."
+    },
+    {
+      "event_type": "task_case",
+      "id": "invoice-006",
+      "workflow_id": "wf-invoice",
+      "category": "invoice_processing",
+      "difficulty": "hard",
+      "description": "Synthetic invoice invoice-006; line-item total $310.50.",
+      "baseline_cost_usd": "3.20",
+      "baseline_minutes": "6",
+      "expected_outcome": {
+        "invoice_total": "310.50",
+        "currency": "USD",
+        "vendor_id": "V-015"
+      },
+      "metadata": {
+        "synthetic": true
+      }
+    },
+    {
+      "event_type": "execution",
+      "id": "invoice-run-006",
+      "workflow_id": "wf-invoice",
+      "configuration_id": "cfg-invoice",
+      "task_case_id": "invoice-006",
+      "category": "invoice_processing",
+      "runtime_status": "finished",
+      "outcome": "verified_success",
+      "attempts": 1,
+      "fallback_completed": false,
+      "baseline_cost_usd": "3.20",
+      "started_at": "2026-10-06T09:00:00Z"
+    },
+    {
+      "event_type": "model_call",
+      "id": "invoice-call-006",
+      "execution_id": "invoice-run-006",
+      "provider": "synthetic",
+      "model": "illustrative-invoice-v1",
+      "input_tokens": 2200,
+      "output_tokens": 500,
+      "reported_cost_usd": "0.006500",
+      "pricing_source": "synthetic_demo_assumption"
+    },
+    {
+      "event_type": "outcome_evidence",
+      "id": "invoice-evidence-006",
+      "execution_id": "invoice-run-006",
+      "method": "expected_output_match",
+      "status": "verified_success",
+      "reference": "invoice-006",
+      "reasoning": "Synthetic invoice field and total validation."
+    }
+  ]
+}

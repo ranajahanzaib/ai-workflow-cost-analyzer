@@ -1,0 +1,1 @@
+record_type,event_id,provider,model,effective_from,effective_until,currency,input_price_per_million,output_price_per_million,cached_input_price_per_million,source_type,source_reference
