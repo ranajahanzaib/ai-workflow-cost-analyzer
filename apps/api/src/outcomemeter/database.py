@@ -6,7 +6,9 @@ from pathlib import Path
 
 import duckdb
 
-DB_PATH = Path(os.environ.get("AI_WORKFLOW_COST_ANALYZER_DB", "./data/ai-workflow-cost-analyzer.duckdb"))
+DB_PATH = Path(
+    os.environ.get("AI_WORKFLOW_COST_ANALYZER_DB", "./data/ai-workflow-cost-analyzer.duckdb")
+)
 WRITE_LOCK = threading.RLock()
 
 
