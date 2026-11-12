@@ -1,46 +1,35 @@
-## Contributing
+# Contributing
 
-We welcome contributions of all kinds to improve this project! Here's how you can get involved:
+Thanks for helping improve AI Workflow Cost Analyzer. Keep changes focused, explain the user problem they solve, and preserve the distinction between observed data and assumptions.
 
-1. **Fork the Repository**: Start by forking the repository to your GitHub account.
+## Local setup
 
-2. **Clone Your Fork**: Clone the forked repository to your local machine:
+Use Python 3.12+, `uv`, Node.js 20.19+ (Node 22 recommended), `pnpm`, and Make:
 
-   ```bash
-   git clone <repo_url>
-   cd repo_dir
-   ```
+```sh
+make setup
+make seed
+make test
+make lint
+make build
+```
 
-3. **Create a Branch**: Create a new branch for your feature or bug fix:
+Start the app with `make dev`. The backend uses one DuckDB process; do not add multi-worker guidance or concurrent writers without changing that storage model. Tests use temporary databases and synthetic records.
 
-   ```bash
-   git checkout -b feature-name
-   ```
+## Changes and review
 
-4. **Make Changes**: Make your changes to the codebase. Be sure to follow existing code style and conventions.
+- Open an issue for larger design changes before investing in a broad implementation.
+- Keep financial calculations in the economics module and use `Decimal` for money.
+- Add tests for changed calculations, import validation, API behavior, or UI behavior.
+- Preserve provenance: distinguish provider-reported cost, priced estimates, baselines, manual labels, and unknown values.
+- Keep fixtures fictional. Never include customer data, credentials, prompt bodies, or private traces.
+- Do not silently change historical cost attribution when profiles change.
+- Keep imports transactional and validate relationships before commit.
+- Update the relevant docs when changing formats, formulas, or operational limits.
+- Run the checks above and report any check you could not run in the pull request.
 
-5. **Commit Changes**: Commit your changes with a clear and descriptive message:
+Use a pull request description that covers the problem, approach, tests, and any changed assumptions. Screenshots are useful for visible UI changes.
 
-   ```bash
-   git commit -m "Add detailed description of the changes"
-   ```
+## Reporting issues
 
-6. **Push Changes**: Push your changes to your fork:
-
-   ```bash
-   git push origin feature-name
-   ```
-
-7. **Submit a Pull Request**: Open a pull request from your branch to the main repository's branch. Include a detailed description of your changes and the problem they solve.
-
-8. **Review and Feedback**: Participate in the review process. Make any requested changes, and your contribution will be merged!
-
-### Guidelines
-
-- Ensure your code follows the existing style and conventions.
-- Include tests for any new functionality or bug fixes.
-- Write clear, concise commit messages and pull request descriptions.
-
-### Issues
-
-Feel free to report bugs or suggest enhancements by creating an issue. Be sure to include detailed information about the problem and, if possible, steps to reproduce it.
+Use the repository issue forms for bugs and feature requests. Remove secrets and sensitive records from logs and examples before sharing them.

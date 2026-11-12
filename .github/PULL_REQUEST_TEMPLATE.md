@@ -1,10 +1,20 @@
-Fixes #<issue_number_goes_here>
+## Summary
 
-> It's a good idea to open an issue first for discussion.
+Describe the user problem and the change.
 
-**Description**
-A brief summary of what this PR does and why.
+## Validation
 
-- [ ] Tests pass
-- [ ] README updated if needed
-- [ ] No breaking changes (or described below)
+- [ ] `make test`
+- [ ] `make lint`
+- [ ] `make build`
+- [ ] Other checks (list below)
+
+Checks run:
+
+## Data and assumptions
+
+Describe changes to financial formulas, import formats, evidence interpretation, privacy, or operational limits. Confirm examples contain synthetic data only.
+
+## UI evidence
+
+Attach a screenshot for visible interface changes when practical.
