@@ -6,6 +6,18 @@ Inference spend alone does not describe the economics of an AI workflow. AI Work
 
 AI Workflow Cost Analyzer is an independent local economics analysis layer. It is not a chat app, framework wrapper, observability replacement, or financial forecasting system. A completed model response is never treated as business success without an explicit outcome label.
 
+![AI Workflow Cost Analyzer overview showing verified success economics, attributed costs, evidence coverage, and recent executions](docs/screenshots/overview.png)
+
+The dashboard above uses the bundled synthetic examples. It includes a support-routing comparison with 120 matched task cases and an invoice-processing workflow. Values are illustrative and do not represent provider prices or a quality benchmark.
+
+## Screenshots
+
+### Paired configuration comparison
+
+The comparison uses only task cases present in both configurations. In the seeded support-routing example, the higher-accuracy configuration has a lower cost per verified success and a higher evaluated success rate; results are descriptive, not a claim of statistical significance.
+
+![Paired comparison of the two synthetic support-routing configurations](docs/screenshots/paired-comparison.png)
+
 ## Current capabilities
 
 - Local DuckDB persistence, application-level relationship checks, serialized writes, and atomic imports
@@ -86,6 +98,6 @@ The app binds to loopback by default, has no authentication, and is intended for
 - Statistical bootstrap intervals, full OTLP convention-version support, custom CSV field remapping, advanced comparison experiments, and a provider marketplace are outside the MVP.
 - Scenarios hold measured outcomes/task mix fixed and apply the displayed assumptions; they do not predict model behavior.
 - The current sample is synthetic and intended to demonstrate the analysis flow, not to validate real task quality.
-- No real application screenshot or hosted CI run is included yet. The production build currently emits a large JavaScript chunk warning.
+- The production build currently emits a large JavaScript chunk warning; the build succeeds. Hosted CI was not run as part of this local verification.
 
 See [contributing](CONTRIBUTING.md), [security policy](SECURITY.md), and [MIT license](LICENSE).
