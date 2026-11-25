@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use AI Workflow Cost Analyzer in research or teaching, please cite this software."
+title: "AI Workflow Cost Analyzer"
+version: 0.1.0
+authors:
+  - family-names: Rana
+    given-names: Jahanzaib
+    orcid: "https://orcid.org/0009-0006-7085-0440"
+repository-code: "https://github.com/ranajahanzaib/ai-workflow-cost-analyzer"
+license: MIT
+abstract: "Measure what an AI workflow costs to actually succeed. Inference spend alone does not describe the economics of an AI workflow. AI Workflow Cost Analyzer combines model and tool charges, retries, human review and fallback work, explicit business outcome evidence, and human-only baselines to estimate the cost of verified results."
+keywords:
+  - ai-workflows
+  - cost-analysis
+  - economics
+  - duckdb
+  - telemetry
